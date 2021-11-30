@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --ext js,ts --exec ts-node ./src/index.ts"
+    "start": "cross-env NODE_ENV=production node --no-warnings ./build/index.js",
+    "dev": "nodemon --ext js,ts --exec ts-node -r tsconfig-paths/register -- ./src/index.ts",
+    "build": "npx tsc",
+    "build:clean": "rm -rf build && npx tsc"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +15,25 @@
   "dependencies": {
     "@apollo/gateway": "^0.44.1",
     "apollo-server": "^3.5.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
-    "graphql": "^15.7.2"
+    "graphql": "^15.7.2",
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.2"
+  },
+  "_moduleAliases": {
+    "@modules": "build/modules",
+    "@models": "build/models",
+    "@config": "build/core/config",
+    "@core": "build/core",
+    "@mail": "build/mails",
+    "@middlewares": "build/middlewares",
+    "@helpers": "build/helpers",
+    "@jobs": "build/jobs"
   }
 }
