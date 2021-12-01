@@ -3,12 +3,26 @@ import { mergeTypeDefs } from '@graphql-tools/merge'
 import _ from 'lodash'
 
 import { Role } from '@core/constants/roles'
+import { CreateProduct, createProductResolver } from './create-product'
 
 // If you had Query fields not associated with a
 // specific type you could put them here
 const Query = gql`
   type Query {
     ping: Success!
+  }
+
+  type Product {
+    _id: ID!
+    name: String!
+    description: String
+    price: Number!
+    currency: String!
+    isActive: Boolean!
+    _createdBy: ID
+    _updatedBy: ID
+    createdAt: Date
+    updatedAt: Date
   }
 
   enum Role {
@@ -36,5 +50,5 @@ const resolver = {
   },
 }
 
-export const typeDefs = mergeTypeDefs([Query, Mutation])
-export const resolvers = _.merge(resolver)
+export const typeDefs = mergeTypeDefs([Query, Mutation, CreateProduct])
+export const resolvers = _.merge(resolver, createProductResolver)
