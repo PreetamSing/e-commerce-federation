@@ -30,7 +30,7 @@ async function startApolloServer() {
       },
     ]),
     context: ({ req, res: _res }) => {
-      return { req }
+      return { req, user: req?.body?.user }
     },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   })
