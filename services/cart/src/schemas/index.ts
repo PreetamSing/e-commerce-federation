@@ -4,6 +4,7 @@ import _ from 'lodash'
 
 import { Role } from '@core/constants/roles'
 import { CreateProduct, createProductResolver } from './create-product'
+import { GetProducts, getProductsResolver } from './get-products'
 
 // If you had Query fields not associated with a
 // specific type you could put them here
@@ -50,5 +51,14 @@ const resolver = {
   },
 }
 
-export const typeDefs = mergeTypeDefs([Query, Mutation, CreateProduct])
-export const resolvers = _.merge(resolver, createProductResolver)
+export const typeDefs = mergeTypeDefs([
+  Query,
+  Mutation,
+  CreateProduct,
+  GetProducts,
+])
+export const resolvers = _.merge(
+  resolver,
+  createProductResolver,
+  getProductsResolver
+)
