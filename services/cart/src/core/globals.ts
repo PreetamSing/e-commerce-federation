@@ -4,6 +4,7 @@ import path from 'path'
 
 // Database Models
 import { ProductModel } from '@models/product'
+import { PurchaseModel } from '@models/purchase'
 
 const config: ConfigInterface = Config()
 
@@ -14,6 +15,7 @@ export const App = {
   Config: config,
   Models: {
     Product: ProductModel,
+    Purchase: PurchaseModel,
   },
   Database: null,
 }
