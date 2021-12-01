@@ -92,9 +92,8 @@ export const resendCodeResolver = {
         ])
 
         // Send message with verification code.
-        await TwilioHelper.messages.create({
+        await TwilioHelper.SendMessage({
           body: `Verification code for your e-commerce login is ${verificationTwoFA.code}`,
-          from: App.Config.TWILIO_DEFAULT_SENDER_MOBILE,
           to: user.mobile,
         })
 
@@ -117,9 +116,8 @@ export const resendCodeResolver = {
         ])
 
         // Send message with verification code.
-        await TwilioHelper.messages.create({
+        await TwilioHelper.SendMessage({
           body: `Verification code for your e-commerce reset password request is ${verificationObj.code}`,
-          from: App.Config.TWILIO_DEFAULT_SENDER_MOBILE,
           to: user.mobile,
         })
 

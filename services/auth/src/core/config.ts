@@ -22,6 +22,7 @@ export interface ConfigInterface {
   TWILIO_ACCOUNT_SID: string
   TWILIO_AUTH_TOKEN: string
   TWILIO_DEFAULT_SENDER_MOBILE: string
+  TWILIO_MESSAGING_SERVICE_SID: string
 }
 
 export default (): ConfigInterface => {

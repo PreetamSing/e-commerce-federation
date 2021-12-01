@@ -16,7 +16,7 @@ import { buildSubgraphSchema } from '@apollo/subgraph'
 
 import { typeDefs, resolvers } from '@schemas/index'
 import Bootstrap from '@core/bootstrap'
-import { App } from '@core/globals'
+import { App, Logger } from '@core/globals'
 
 async function startApolloServer() {
   const app = express()
@@ -39,11 +39,11 @@ async function startApolloServer() {
   await new Promise<void>((resolve) =>
     httpServer.listen({ port: App.Config.PORT }, resolve)
   )
-  console.log(
+  Logger.info(
     `🚀 Server ready at http://localhost:${App.Config.PORT}${server.graphqlPath}`
   )
 }
 
 startApolloServer().catch((error) => {
-  console.log('Failed to start server', error)
+  Logger.error('Failed to start server', error)
 })
