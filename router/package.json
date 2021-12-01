@@ -14,14 +14,18 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/gateway": "^0.44.1",
-    "apollo-server": "^3.5.0",
+    "apollo-server-core": "^3.5.0",
+    "apollo-server-express": "^3.5.0",
     "axios": "^0.24.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.3",
     "graphql": "^15.7.2",
     "module-alias": "^2.2.2"
   },
   "devDependencies": {
+    "@types/express-http-proxy": "^1.6.3",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
