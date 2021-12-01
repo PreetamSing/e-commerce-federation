@@ -4,15 +4,17 @@ const ObjectId = Schema.Types.ObjectId
 
 interface Product extends BaseModel {
   name: string
-  description: string
+  description?: string
   price: number
+  currency?: string
 }
 
 const schema = new Schema<Product>(
   {
     name: { type: String, required: true },
     description: String,
-    price: { type: Number, required: true },
+    price: { type: Number, required: true }, // In smallest denomination
+    currency: { type: String, default: 'inr' },
 
     // From Base Model.
     isActive: { type: Boolean, default: true },
