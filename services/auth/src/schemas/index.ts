@@ -5,6 +5,8 @@ import _ from 'lodash'
 import { Authorizer, authorizerResolver } from './authorizer'
 import { SignUp, signUpResolver } from './sign-up'
 import { Role } from '@core/constants/roles'
+import { SignIn, signInResolver } from './sign-in'
+import { VerifyEmail, verifyEmailResolver } from './verify-email'
 
 // If you had Query fields not associated with a
 // specific type you could put them here
@@ -46,5 +48,18 @@ const resolver = {
   },
 }
 
-export const typeDefs = mergeTypeDefs([Query, Mutation, Authorizer, SignUp])
-export const resolvers = _.merge(resolver, authorizerResolver, signUpResolver)
+export const typeDefs = mergeTypeDefs([
+  Query,
+  Mutation,
+  Authorizer,
+  SignUp,
+  SignIn,
+  VerifyEmail,
+])
+export const resolvers = _.merge(
+  resolver,
+  authorizerResolver,
+  signUpResolver,
+  signInResolver,
+  verifyEmailResolver
+)

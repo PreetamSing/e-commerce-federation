@@ -50,7 +50,7 @@ export const signInResolver = {
         '+verification +password'
       )
 
-      if (!user) {
+      if (!user || !user.emailVerifiedAt) {
         throw new UserInputError('Invalid Credentials.')
       }
 
