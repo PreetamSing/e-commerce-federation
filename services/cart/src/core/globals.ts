@@ -3,7 +3,7 @@ import { Logger } from './logger'
 import path from 'path'
 
 // Database Models
-import { UserModel } from '@models/user'
+import { ProductModel } from '@models/product'
 
 const config: ConfigInterface = Config()
 
@@ -13,7 +13,7 @@ export const App = {
   EXTENSION_ECOSYSTEM: path.extname(__filename) === '.js' ? 'js' : 'ts',
   Config: config,
   Models: {
-    User: UserModel,
+    Product: ProductModel,
   },
   Database: null,
 }
