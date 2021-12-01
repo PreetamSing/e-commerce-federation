@@ -44,7 +44,7 @@ export const signInResolver = {
       }
 
       // Fetch user
-      const query = _.pickBy({ email, mobile }, _.identity)
+      const query = _.pickBy({ email, mobile, isActive: true }, _.identity)
       const user = await App.Models.User.findOne(
         query,
         '+verification +password'
@@ -94,6 +94,7 @@ export const signInResolver = {
       const isFirstLogin = user.isFirstLogin
       user.isFirstLogin = false
       await user['deleteTwoFACode']()
+      user.mobileVerifiedAt = new Date()
       await user.save()
 
       // Generate a new JWT token

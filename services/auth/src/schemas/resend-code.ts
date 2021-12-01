@@ -26,6 +26,7 @@ export const ResendCode = gql`
   enum VerificationCodeType {
     email
     twoFA
+    resetPassword
   }
 `
 
@@ -39,7 +40,7 @@ export const resendCodeResolver = {
       }
 
       // Fetch user
-      const query = _.pickBy({ email, mobile }, _.identity)
+      const query = _.pickBy({ email, mobile, isActive: true }, _.identity)
       const user = await App.Models.User.findOne(query, '+verification')
 
       // Check if referenceCode is valid
@@ -100,6 +101,31 @@ export const resendCodeResolver = {
         return {
           message: 'Two FA created successfully.',
           referenceCode: verificationTwoFA.referenceCode,
+        }
+      }
+
+      if (codeType === 'resetPassword') {
+        // Delete old verification object.
+        await user['deleteResetPasswordCode']()
+        // Create new reset password code
+        await user['createResetPasswordCode']()
+        await user.save()
+
+        const verificationObj = _.findLast(user.verification, [
+          'codeType',
+          'resetPassword',
+        ])
+
+        // Send message with verification code.
+        await TwilioHelper.messages.create({
+          body: `Verification code for your e-commerce reset password request is ${verificationObj.code}`,
+          from: App.Config.TWILIO_DEFAULT_SENDER_MOBILE,
+          to: user.mobile,
+        })
+
+        return {
+          message: 'Reset password code sent successfully.',
+          referenceCode: verificationObj.referenceCode,
         }
       }
     },

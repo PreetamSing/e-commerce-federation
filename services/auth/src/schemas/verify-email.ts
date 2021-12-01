@@ -15,7 +15,10 @@ export const verifyEmailResolver = {
     verifyEmail: async (_parent, args, _context, _info) => {
       const { email, id } = args
 
-      const user = await App.Models.User.findOne({ email }, '+verification')
+      const user = await App.Models.User.findOne(
+        { email, isActive: true },
+        '+verification'
+      )
 
       if (!user) {
         throw new UserInputError('Email verification failed!')

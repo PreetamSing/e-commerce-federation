@@ -20,7 +20,10 @@ class JWTHelper {
     const { token } = payload
     const verification = this.VerifyToken(token)
     if (verification) {
-      const user = await App.Models.User.findById(verification.sub)
+      const user = await App.Models.User.findOne({
+        _id: verification.sub,
+        isActive: true,
+      })
       delete user?.password
       return user
     }
