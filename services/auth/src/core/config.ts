@@ -21,6 +21,7 @@ export interface ConfigInterface {
   SENDGRID_DEFAULT_SENDER_EMAIL: string
   TWILIO_ACCOUNT_SID: string
   TWILIO_AUTH_TOKEN: string
+  TWILIO_DEFAULT_SENDER_MOBILE: string
 }
 
 export default (): ConfigInterface => {

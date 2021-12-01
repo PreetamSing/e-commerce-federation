@@ -33,6 +33,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/lodash": "^4.14.177",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",

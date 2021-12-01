@@ -44,7 +44,7 @@ const schema = new Schema<User>(
               'resetPassword',
               'email',
               'mobile',
-              '2FA',
+              'twoFA',
               null,
             ],
           },
@@ -107,15 +107,15 @@ schema.method(
   }
 )
 
-// Create 2FA code
-schema.method('create2FACode', async function (): Promise<void> {
-  await this.delete2FACode()
-  await this.createVerificationCode('2FA')
+// Create twoFA code
+schema.method('createTwoFACode', async function (): Promise<void> {
+  await this.deleteTwoFACode()
+  await this.createVerificationCode('twoFA')
 })
 
-// Nullify 2FA code
-schema.method('delete2FACode', async function (): Promise<void> {
-  await this.deleteVerificationCode('2FA')
+// Nullify twoFA code
+schema.method('deleteTwoFACode', async function (): Promise<void> {
+  await this.deleteVerificationCode('twoFA')
 })
 
 // Create Reset Password code
