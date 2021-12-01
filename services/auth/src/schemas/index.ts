@@ -7,6 +7,7 @@ import { SignUp, signUpResolver } from './sign-up'
 import { Role } from '@core/constants/roles'
 import { SignIn, signInResolver } from './sign-in'
 import { VerifyEmail, verifyEmailResolver } from './verify-email'
+import { ResendCode, resendCodeResolver } from './resend-code'
 
 // If you had Query fields not associated with a
 // specific type you could put them here
@@ -55,11 +56,13 @@ export const typeDefs = mergeTypeDefs([
   SignUp,
   SignIn,
   VerifyEmail,
+  ResendCode,
 ])
 export const resolvers = _.merge(
   resolver,
   authorizerResolver,
   signUpResolver,
   signInResolver,
-  verifyEmailResolver
+  verifyEmailResolver,
+  resendCodeResolver
 )

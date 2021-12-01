@@ -36,14 +36,14 @@ export const SignIn = gql`
 export const signInResolver = {
   Mutation: {
     signIn: async (_parent, args, _context, _info) => {
-      const { email, mobile, password, grantType, code } = args
+      const { email, mobile, password, grantType, code } = args.input
 
       // Check at least one of { email, mobile } is provided.
       if (!email && !mobile) {
         throw new UserInputError('Provide either email or mobile.')
       }
 
-      // Create User Document & Create activation code
+      // Fetch user
       const query = _.pickBy({ email, mobile }, _.identity)
       const user = await App.Models.User.findOne(
         query,

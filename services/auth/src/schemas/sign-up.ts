@@ -27,7 +27,7 @@ export const SignUp = gql`
 export const signUpResolver = {
   Mutation: {
     signUp: async (_parent, args, _context, _info) => {
-      const { email, mobile, password } = args
+      const { email, mobile, password } = args.input
 
       // Check if { Email } is available
       if (email) {
@@ -57,16 +57,16 @@ export const signUpResolver = {
         role: Role.USER,
       })
 
-      // Auto Generate Password
+      // Email Verification Id
       await user['createEmailVerificationId']()
       await user.save()
 
-      const verification2FA = _.findLast(user.verification, [
+      const verificationEmail = _.findLast(user.verification, [
         'codeType',
         'email',
       ])
 
-      const verifyEmailUrl = `${App.Config.GATEWAY_URL}?query={verifyEmail(email: "${email}", id: "${verification2FA.code}")}`
+      const verifyEmailUrl = `${App.Config.GATEWAY_URL}?query={verifyEmail(email: "${email}", id: "${verificationEmail.code}")}`
 
       // Send Email with Email Verification Url
       SgMailHelper.send({
@@ -74,13 +74,13 @@ export const signUpResolver = {
         from: App.Config.SENDGRID_DEFAULT_SENDER_EMAIL,
         subject: 'Email Verification',
         text: `Verify you email by going to: ${verifyEmailUrl}`,
-        html: `<a href="${verifyEmailUrl}" target="_blank"><button>Verify Email</button></a>`,
+        html: `<button><a href="${verifyEmailUrl}" target="_blank">Verify Email</a></button>`,
       })
 
       // All Done
       return {
         message: 'Registration successful. Check your email inbox to verify.',
-        referenceCode: verification2FA.referenceCode,
+        referenceCode: verificationEmail.referenceCode,
         user,
       }
     },
