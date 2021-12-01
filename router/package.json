@@ -15,6 +15,7 @@
   "dependencies": {
     "@apollo/gateway": "^0.44.1",
     "apollo-server": "^3.5.0",
+    "axios": "^0.24.0",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "graphql": "^15.7.2",

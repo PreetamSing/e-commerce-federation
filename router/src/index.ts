@@ -9,12 +9,26 @@ if (path.extname(__filename) === '.js') {
 }
 
 import { ApolloServer } from 'apollo-server'
-import { ApolloGateway } from '@apollo/gateway'
+import { ApolloGateway, RemoteGraphQLDataSource } from '@apollo/gateway'
 
-const gateway = new ApolloGateway()
+import Context from './context'
+
+const gateway = new ApolloGateway({
+  buildService: ({ name, url }) => {
+    return new RemoteGraphQLDataSource({
+      url,
+      willSendRequest({ request, context }) {
+        // Following user will appear in the 'req.body.user' of service
+        // @ts-ignore
+        request.user = context.user
+      },
+    })
+  },
+})
 
 const server = new ApolloServer({
   gateway,
+  context: Context,
 })
 
 server
