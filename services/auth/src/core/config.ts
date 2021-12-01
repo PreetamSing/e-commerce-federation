@@ -8,6 +8,7 @@ export interface ConfigInterface {
   DB_CONNECTION_STRING: string
   DB_CONNECTION_OPTIONS: any
 
+  GATEWAY_URL: string
   ITEMS_PER_PAGE: number
 
   SALT_ROUNDS: number
@@ -18,6 +19,8 @@ export interface ConfigInterface {
   SUPER_ADMIN_MOBILE: string
   SENDGRID_API_KEY: string
   SENDGRID_DEFAULT_SENDER_EMAIL: string
+  TWILIO_ACCOUNT_SID: string
+  TWILIO_AUTH_TOKEN: string
 }
 
 export default (): ConfigInterface => {

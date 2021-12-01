@@ -10,6 +10,7 @@ export default (): ConfigInterface => {
       useUnifiedTopology: true,
     },
 
+    GATEWAY_URL: process.env.GATEWAY_URL,
     ITEMS_PER_PAGE: parseInt(process.env.ITEMS_PER_PAGE),
     SALT_ROUNDS: parseInt(process.env.SALT_ROUNDS),
     JWT_SECRET: process.env.JWT_SECRET,
@@ -19,5 +20,7 @@ export default (): ConfigInterface => {
     SUPER_ADMIN_MOBILE: process.env.SUPER_ADMIN_MOBILE,
     SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
     SENDGRID_DEFAULT_SENDER_EMAIL: process.env.SENDGRID_DEFAULT_SENDER_EMAIL,
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
   }
 }

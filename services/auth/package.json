@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "module-alias": "^2.2.2",
     "mongoose": "^6.0.14",
+    "twilio": "^3.71.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {

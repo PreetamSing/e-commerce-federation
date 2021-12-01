@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-express'
+import { ApolloError } from 'apollo-server-errors'
 
 import { Logger } from '@core/globals'
 import JWTHelper from '@helpers/jwt.helper'
@@ -20,14 +21,14 @@ export const authorizerResolver = {
         const token = req.headers.authorization.split(' ')[1]
         const user = await JWTHelper.GetUser({ token })
 
-        if (!user) {
-          return null
-        }
-
         return user
       } catch (error) {
         Logger.error(error)
-        return null
+        throw new ApolloError(
+          error?.message ?? 'Oops! Something went wrong',
+          'INTERNAL_SERVER_ERROR',
+          error
+        )
       }
     },
   },

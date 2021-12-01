@@ -33,6 +33,7 @@ const _createSuperAdmin = async () => {
   })
   const superAdminJSON = {
     email: App.Config.SUPER_ADMIN_EMAIL,
+    emailVerifiedAt: new Date(),
     mobile: App.Config.SUPER_ADMIN_MOBILE,
     password: App.Config.SUPER_ADMIN_PASSWORD,
     role: Role.SUPER_ADMIN,

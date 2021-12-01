@@ -140,5 +140,14 @@ schema.method('deleteForgotPasswordCode', async function (): Promise<void> {
   await this.deleteVerificationCode('forgotPassword')
 })
 
+// Create Email Verification Id
+schema.method('createEmailVerificationId', async function (): Promise<void> {
+  await this.verification.push({
+    codeType: 'email',
+    code: GenerateRandomStringOfLength(16),
+    referenceCode: GenerateRandomStringOfLength(10),
+  })
+})
+
 // All Done
 export const UserModel = Model<User>('User', schema)
