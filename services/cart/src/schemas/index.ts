@@ -13,6 +13,7 @@ import { customScalarResolvers } from 'custom-scalars'
 // specific type you could put them here
 const Query = gql`
   type Query {
+    pingCart: String!
   }
 
   scalar Date
@@ -42,15 +43,16 @@ const Query = gql`
 
 const Mutation = gql`
   type Mutation {
+    pingCart: String!
   }
 `
 
 const resolver = {
   Query: {
-    ping: (_parent, _args, _context, _info) => 'SUCCESS',
+    pingCart: (_parent, _args, _context, _info) => 'SUCCESS',
   },
   Mutation: {
-    ping: (_parent, _args, _context, _info) => 'SUCCESS',
+    pingCart: (_parent, _args, _context, _info) => 'SUCCESS',
   },
 }
 
