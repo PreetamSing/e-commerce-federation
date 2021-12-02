@@ -12,7 +12,7 @@ export const CreateProduct = gql`
   input CreateProductInput {
     name: String!
     description: String
-    price: Number!
+    price: Int!
     currency: String
   }
 

@@ -19,7 +19,7 @@ const Query = gql`
     _id: ID!
     name: String!
     description: String
-    price: Number!
+    price: Int!
     currency: String!
     isActive: Boolean!
     _createdBy: ID
