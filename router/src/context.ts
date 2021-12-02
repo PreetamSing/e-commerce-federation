@@ -7,7 +7,7 @@ const Context = async ({ req }) => {
   }
 
   const authUrl = process.env.AUTH_URL
-  const user = await axios.get(authUrl, {
+  const result = await axios.get(authUrl, {
     params: {
       query: '{authorizer { _id, email, mobile, role, isFirstLogin }}',
     },
@@ -15,6 +15,7 @@ const Context = async ({ req }) => {
       authorization: token,
     },
   })
+  const user = result.data.data.authorizer
   return { user }
 }
 
