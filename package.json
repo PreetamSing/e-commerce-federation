@@ -1,0 +1,21 @@
+{
+  "name": "e-commerce-federation",
+  "version": "1.0.0",
+  "description": "GraphQL Microservice Arch implementation for e-commerce store using Apollo Federation.",
+  "main": "index.js",
+  "scripts": {
+    "load-dependencies": "concurrently \"cd ./router && npm i -D\" \"cd ./services/auth && npm i -D\" \"cd ./services/cart && npm i -D\" \"cd ./services/rest-api && npm i -D\"",
+    "dev": "concurrently \"cd ./router && npm run dev\" \"cd ./services/auth && npm run dev\" \"cd ./services/cart && npm run dev\" \"cd ./services/rest-api && npm run dev\"",
+    "stripe-webhook": "stripe listen --forward-to http://localhost:4000/rest/api/v1/webhook/stripe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-PreetamSing:PreetamSing/e-commerce-federation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.4.0"
+  }
+}

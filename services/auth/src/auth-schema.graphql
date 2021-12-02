@@ -1,0 +1,97 @@
+type Query {
+  ping: Success!
+  authorizer: User
+}
+
+type User {
+  _id: ID!
+  email: String!
+  mobile: String!
+  role: Role!
+  isFirstLogin: Boolean!
+}
+
+enum Role {
+  USER
+  SUPER_ADMIN
+}
+
+enum Success {
+  SUCCESS
+}
+
+type Mutation {
+  ping: Success!
+  signUp(input: SignUpInput!): SignUpMutPayload!
+  signIn(input: SignInInput!): SignInMutPayload!
+  verifyEmail(email: String!, id: String!): String!
+  resendCode(input: ResendCodeInput!): ResendCodeMutPayload!
+  resetPassword(input: ResetPasswordInput!): ResetPasswordMutPayload!
+}
+
+input SignUpInput {
+  email: String!
+  mobile: String!
+  password: String!
+}
+
+type SignUpMutPayload {
+  message: String!
+  referenceCode: String!
+  user: User!
+}
+
+input SignInInput {
+  email: String
+  mobile: String
+  password: String
+  code: String
+  grantType: GrantType!
+}
+
+type SignInMutPayload {
+  message: String!
+  referenceCode: String
+  isFirstLogin: Boolean
+  token: String
+}
+
+enum GrantType {
+  PASSWORD
+  twoFA
+}
+
+input ResendCodeInput {
+  email: String
+  mobile: String
+  referenceCode: String!
+  codeType: VerificationCodeType!
+}
+
+type ResendCodeMutPayload {
+  message: String!
+  referenceCode: String!
+}
+
+enum VerificationCodeType {
+  email
+  twoFA
+  resetPassword
+}
+
+input ResetPasswordInput {
+  reqType: ResetPasswordReqType!
+  mobile: String!
+  code: String
+  newPassword: String
+}
+
+type ResetPasswordMutPayload {
+  message: String!
+  referenceCode: String
+}
+
+enum ResetPasswordReqType {
+  REQUEST
+  twoFA
+}

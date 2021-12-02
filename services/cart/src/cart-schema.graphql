@@ -1,0 +1,72 @@
+type Query {
+  pingCart: String!
+  getProducts(input: GetProductsInput!): GetProductsQueryPayload!
+}
+
+scalar Date
+
+type Product {
+  _id: ID!
+  name: String!
+  description: String
+  price: Int!
+  currency: String!
+  isActive: Boolean!
+  _createdBy: ID
+  _updatedBy: ID
+  createdAt: Date
+  updatedAt: Date
+}
+
+enum Role {
+  USER
+  SUPER_ADMIN
+}
+
+enum Success {
+  SUCCESS
+}
+
+type Mutation {
+  pingCart: String!
+  createProduct(input: CreateProductInput!): CreateProductMutPayload!
+  buyProduct(input: BuyProductInput!): BuyProductMutPayload!
+  updatePurchase(id: ID!, sign: String!, amountReceived: Int!): String
+}
+
+input CreateProductInput {
+  name: String!
+  description: String
+  price: Int!
+  currency: String
+}
+
+type CreateProductMutPayload {
+  message: String!
+  product: Product!
+}
+
+input GetProductsInput {
+  startIndex: Int
+  itemsPerPage: Int
+  name: String
+  description: String
+}
+
+type GetProductsQueryPayload {
+  message: String!
+  totalItems: Int!
+  startIndex: Int!
+  itemsPerPage: Int!
+  items: [Product!]!
+}
+
+input BuyProductInput {
+  paymentMethodType: String!
+  productId: ID!
+}
+
+type BuyProductMutPayload {
+  message: String!
+  clientSecret: String!
+}
