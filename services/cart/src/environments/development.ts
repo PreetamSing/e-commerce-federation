@@ -11,6 +11,7 @@ export default (): ConfigInterface => {
     },
 
     GATEWAY_URL: process.env.GATEWAY_URL,
+    REST_API_ADDRESS: process.env.REST_API_ADDRESS,
     ITEMS_PER_PAGE: parseInt(process.env.ITEMS_PER_PAGE),
     STRIPE_PUBLISHABLE_KEY: process.env.DEV_STRIPE_PUBLISHABLE_KEY,
     STRIPE_SECRET_KEY: process.env.DEV_STRIPE_SECRET_KEY,

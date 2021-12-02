@@ -9,6 +9,7 @@ export interface ConfigInterface {
   DB_CONNECTION_OPTIONS: any
 
   GATEWAY_URL: string
+  REST_API_ADDRESS: string
   ITEMS_PER_PAGE: number
 
   STRIPE_PUBLISHABLE_KEY: string
