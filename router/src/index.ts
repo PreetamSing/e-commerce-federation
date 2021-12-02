@@ -22,7 +22,7 @@ async function startApolloServer() {
 
   // Setup proxy for rest-api.
   const REST_API_URL = process.env.REST_API_URL
-  app.use('/rest-api', proxy(REST_API_URL))
+  app.use('/rest', proxy(REST_API_URL))
   const httpServer = http.createServer(app)
   const gateway = new ApolloGateway({
     buildService: ({ name, url }) => {
