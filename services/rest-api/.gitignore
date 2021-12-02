@@ -1,0 +1,8 @@
+node_modules
+build
+logs
+.vscode
+.env
+keys
+docs
+fcm-credentials.json
