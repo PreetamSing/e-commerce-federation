@@ -2,8 +2,6 @@ import { gql } from 'apollo-server-express'
 import { AuthenticationError } from 'apollo-server-errors'
 import _ from 'lodash'
 
-import { App } from '@core/globals'
-import { Role } from '@core/constants/roles'
 import RegexQueryGenerator from '@helpers/regex-query-generator.helper'
 import Paginator from '@helpers/pagination.helper'
 
@@ -32,7 +30,7 @@ export const getProductsResolver = {
   Query: {
     getProducts: async (_parent, args, context, _info) => {
       const { user: __user } = context
-      if (__user?.role !== Role.USER) {
+      if (!__user?.role) {
         throw new AuthenticationError(
           'You are not authorized to fetch products!'
         )
