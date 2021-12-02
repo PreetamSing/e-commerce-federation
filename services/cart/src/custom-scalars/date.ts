@@ -1,6 +1,6 @@
 import { GraphQLScalarType } from 'graphql'
 
-export const dateResolver = new GraphQLScalarType({
+const dateScalar = new GraphQLScalarType({
   name: 'Date',
   parseValue(value) {
     return new Date(value)
@@ -9,3 +9,7 @@ export const dateResolver = new GraphQLScalarType({
     return value.toISOString()
   },
 })
+
+export const dateResolver = {
+  Date: dateScalar,
+}
