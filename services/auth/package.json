@@ -41,6 +41,14 @@
     "typescript": "^4.5.2"
   },
   "_moduleAliases": {
-    "@schemas": "build/schemas"
+    "@schemas": "build/schemas",
+    "@modules": "build/modules",
+    "@models": "build/models",
+    "@config": "build/core/config",
+    "@core": "build/core",
+    "@mail": "build/mails",
+    "@middlewares": "build/middlewares",
+    "@helpers": "build/helpers",
+    "@jobs": "build/jobs"
   }
 }
