@@ -28,6 +28,7 @@
     "module-alias": "^2.2.2",
     "mongoose": "^6.0.14",
     "stripe": "^8.191.0",
+    "web3-eth-accounts": "^1.6.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
