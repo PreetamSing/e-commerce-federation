@@ -7,6 +7,7 @@ import { CreateProduct, createProductResolver } from './create-product'
 import { GetProducts, getProductsResolver } from './get-products'
 import { BuyProduct, buyProductResolver } from './buy-product'
 import { UpdatePurchase, updatePurchaseResolver } from './update-purchase'
+import { customScalarResolvers } from 'custom-scalars'
 
 // If you had Query fields not associated with a
 // specific type you could put them here
@@ -14,6 +15,8 @@ const Query = gql`
   type Query {
     ping: Success!
   }
+
+  scalar Date
 
   type Product {
     _id: ID!
@@ -63,6 +66,7 @@ export const typeDefs = mergeTypeDefs([
 ])
 export const resolvers = _.merge(
   resolver,
+  customScalarResolvers,
   createProductResolver,
   getProductsResolver,
   buyProductResolver,
