@@ -13,7 +13,6 @@ import { customScalarResolvers } from 'custom-scalars'
 // specific type you could put them here
 const Query = gql`
   type Query {
-    ping: Success!
   }
 
   scalar Date
@@ -43,7 +42,6 @@ const Query = gql`
 
 const Mutation = gql`
   type Mutation {
-    ping: Success!
   }
 `
 
