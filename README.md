@@ -16,12 +16,6 @@ npm i -g @apollo/rover
 
 Follow these two steps: [#1](https://www.apollographql.com/docs/rover/configuring/#1-obtain-an-api-key) and [#2](https://www.apollographql.com/docs/rover/configuring/#2-provide-the-api-key-to-rover)
 
-Run following command in every service directory, namely "auth", "cart", "rest-api".
-
-```bash
-rover subgraph publish ${Graph id}@${variant} --schema "./src/${service name}-schema.graphql" --name ${service name} --routing-url "http://localhost:${service port}/graphql"
-```
-
 ### Reference
 
 [Rover CLI](https://www.apollographql.com/docs/rover/)
@@ -31,6 +25,12 @@ rover subgraph publish ${Graph id}@${variant} --schema "./src/${service name}-sc
 ## Setup
 
 Clone the project from Github.
+
+Run following command in every service directory, namely "auth", "cart", "rest-api".
+
+```bash
+rover subgraph publish ${Graph id}@${variant} --schema "./src/${service name}-schema.graphql" --name ${service name} --routing-url "http://localhost:${service port}/graphql"
+```
 
 Install Dev dependencies in the root directory of project by running:
 
