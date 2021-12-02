@@ -1,5 +1,5 @@
 type Query {
-  ping: Success!
+  pingCart: String!
   getProducts(input: GetProductsInput!): GetProductsQueryPayload!
 }
 
@@ -28,7 +28,7 @@ enum Success {
 }
 
 type Mutation {
-  ping: Success!
+  pingCart: String!
   createProduct(input: CreateProductInput!): CreateProductMutPayload!
   buyProduct(input: BuyProductInput!): BuyProductMutPayload!
   updatePurchase(id: ID!, sign: String!, amountReceived: Int!): String
