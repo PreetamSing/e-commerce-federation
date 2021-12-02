@@ -19,3 +19,8 @@ export const App = {
   },
   Database: null,
 }
+
+// Assign them to Global
+export const Global: any = global
+Global.Logger = Logger
+Global.App = App
